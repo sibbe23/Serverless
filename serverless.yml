@@ -1,18 +1,56 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: lystloc
-# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
-app: api
-# "service" is the name of this project. This will also be added to your AWS resource names.
+org: "01102024"
 service: api
+frameworkVersion: '4'
 
 provider:
   name: aws
   runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    DB_HOST: ${env:DB_HOST} 
+    DB_USER: ${env:DB_USER} 
+    DB_PASSWORD: ${env:DB_PASSWORD} 
+    DB_NAME: ${env:DB_NAME} 
+    
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "rds:DescribeDBInstances"
+        - "rds:Connect"
+      Resource: "*"
 
 functions:
-  hello:
-    handler: handler.hello
+  createVendor:
+    handler: handler.createVendor
     events:
       - httpApi:
-          path: /
+          path: /vendors
+          method: post
+
+  getAllVendors:  
+    handler: handler.getAllVendors
+    events:
+      - httpApi:
+          path: /vendors
           method: get
+
+  getVendor: 
+    handler: handler.getVendor
+    events:
+      - httpApi:
+          path: /vendors/{id}
+          method: get
+
+  updateVendor:
+    handler: handler.updateVendor
+    events:
+      - httpApi:
+          path: /vendors/{id}
+          method: put
+
+  deleteVendor:
+    handler: handler.deleteVendor
+    events:
+      - httpApi:
+          path: /vendors/{id}
+          method: delete
