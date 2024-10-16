@@ -1,6 +1,6 @@
 org: "01102024"
 service: api
-frameworkVersion: '4'
+
 
 provider:
   name: aws
