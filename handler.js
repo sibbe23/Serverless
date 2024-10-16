@@ -2,7 +2,6 @@ const { Vendor } = require('./models/vendor');
 
 module.exports.createVendor = async (event) => {
   const { name, address } = JSON.parse(event.body);
-
   try {
     const newVendor = await Vendor.create({ name, address });
 
