@@ -8,7 +8,7 @@ module.exports.createVendor = async (event) => {
       statusCode: 201,
       body: JSON.stringify({ message: 'Vendor created', VendorId: newVendor.id }),
     };
-    
+
   } catch (error) {
     return {
       statusCode: 500,
@@ -16,7 +16,6 @@ module.exports.createVendor = async (event) => {
     };
   }
 };
-
 module.exports.getVendor = async (event) => {
   const { id } = event.pathParameters;
 
