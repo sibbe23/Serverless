@@ -13,6 +13,7 @@
     "dotenv": "^16.4.5",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
-    "sequelize": "^6.37.4"
+    "sequelize": "^6.37.4",
+    "serverless": "^3.39.0"
   }
 }

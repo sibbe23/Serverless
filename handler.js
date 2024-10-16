@@ -4,7 +4,6 @@ module.exports.createVendor = async (event) => {
   const { name, address } = JSON.parse(event.body);
   try {
     const newVendor = await Vendor.create({ name, address });
-
     return {
       statusCode: 201,
       body: JSON.stringify({ message: 'Vendor created', VendorId: newVendor.id }),
