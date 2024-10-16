@@ -38,4 +38,4 @@ const Vendor = sequelize.define('Vendor', {
   timestamps: false, 
 });
 
-module.exports = { sequelize, Vendor };
+module.exports = { Vendor };
